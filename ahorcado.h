@@ -7,8 +7,10 @@ class Ahorcado{
 private:
 	std::string palabra;
 	int intentos;
+    int fallos;
+
 public:
-	// Métodos
+	// MŽtodos
 	
 	// Constructor con parámetros
 	// PRE: palabra_adivinar es una palabra válida de longitud mayor a 3, cant_int es un numero entero >= 3.
@@ -40,6 +42,16 @@ public:
 	// POST: 
 	int obtenerIntentos();	
 	
+    // MŽtodo obtenerFallos
+    // PRE:
+    // POST:
+    int obtenerFallos();
+    
+    // MŽtodo mostrarAhorcado
+    // PRE:
+    // POST:
+    void mostrarAhorcado(int intentos, int fallos, std::string palabra_adivinar);
+    
 	// Destructor
 	~Ahorcado(); 
 	
