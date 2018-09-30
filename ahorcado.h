@@ -47,6 +47,16 @@ public:
 	// PRE:
 	// POST: 
 	int obtenerIntentos();	
+
+    // Metodo obtenerFallos
+    // PRE:
+    // POST:
+    int obtenerFallos();
+    
+    // Metodo mostrarAhorcado
+    // PRE:
+    // POST:
+    void mostrarAhorcado(int intentos, int fallos, std::string palabra_adivinar);
 	
 	// Destructor
 	~Ahorcado(); 
