@@ -18,7 +18,7 @@ int main() {
 std::string convertir_mayusculas(std::string palabra){
 	// Convierte y devuelve una palabra a mayusculas iteranto los caracteres.
 	for(int i = 0; palabra[i]; i++) 
-       palabra[i] = toupper(palabra[i]);
+        palabra[i] = toupper(palabra[i]);
     return palabra;
 }
 
@@ -32,7 +32,12 @@ void pruebaConParametros(){
 	
 	cout << "La palabra a adivinar es: " << palabra << endl;
 	cout << "El jugador dispone de " << juego1.obtenerIntentos() << " intentos para adivinar la palabra." << endl;
+
+	char* vector;
+	vector = juego1.obtenerVector(palabra, juego1.obtenerLongitud(palabra));
+
 	
+	/*	
 	juego1.asignarPalabra("chau");
 	juego1.asignarIntentos(4);
 	std::string palabra_nueva = juego1.obtenerPalabra();
@@ -44,7 +49,7 @@ void pruebaConParametros(){
 	cout << "La nueva palabra a adivinar es: " << palabra_nueva << endl;
 	cout << "El jugador dispone de " << nuevo_intentos << " intentos para adivinar la nueva palabra." << endl;
 	
-	/*Prueba de obtencion de vector dinamico en base a string
+	Prueba de obtencion de vector dinamico en base a string
 	char* vector;
 	vector = juego1.obtenerVector(palabra);
 	*/

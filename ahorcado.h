@@ -8,8 +8,7 @@ private:
 	// Atributos
 	std::string palabra;
 	int intentos;
-	int longitud = palabra.length();
-	char *vector_palabra = new char[longitud];
+	int fallos;
 public:
 	// Metodos
 	
@@ -31,7 +30,7 @@ public:
 	//Metodo obtener vector
 	//PRE:
 	//POST
-	char* obtenerVector(std::string palabra_adivinar);
+	char* obtenerVector(std::string palabra_adivinar, int longitud);
 	
 	// Metodo asignarIntentos
 	// PRE:
@@ -42,6 +41,11 @@ public:
 	// PRE:
 	// POST: 
 	std::string obtenerPalabra();
+
+	// Metodo obtenerLongitud
+	//PRE: recibe la palabra ingresada en forma de string
+	//POST: devuelve la longitud de la palabra
+	int obtenerLongitud(std::string palabra_adivinar);
 	
 	// Metodo obtenerIntentos
 	// PRE:
@@ -57,6 +61,16 @@ public:
     // PRE:
     // POST:
     void mostrarAhorcado(int intentos, int fallos, std::string palabra_adivinar);
+
+	//Metodo obtenerLetra
+	//PRE:
+	//POST:
+	char obtenerLetra();
+
+	// Metodo comprobarLetra
+	// PRE: recibe la letra ingresada por el usuario y el vector que contiene la palabra y la longitud de la misma.
+	// POST: devuelve true si la letra esta, false si no esta
+	bool comprobarLetra(char* vector, char letra, int longitud);
 	
 	// Destructor
 	~Ahorcado(); 

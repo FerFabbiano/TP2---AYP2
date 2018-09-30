@@ -21,9 +21,13 @@ void Ahorcado::asignarPalabra(std::string palabra_adivinar){
 	palabra = palabra_adivinar;
 }
 
+// Metodo obtenerLongitud
+int obtenerLongitud(std::string palabra_adivinar){
+	return palabra_adivinar.length();
+}
+
 // Metodo obtenerVector
-char* obtenerVector(std::string palabra_adivinar){
-	int longitud = palabra_adivinar.lenght();
+char* obtenerVector(std::string palabra_adivinar, int longitud){
 	char* vector_palabra = new char[longitud];
     for(int i = 0; palabra_adivinar[i]; i++){
 	    vector_palabra[i] = palabra_adivinar[i];
@@ -129,6 +133,23 @@ void Ahorcado::mostrarAhorcado(int intentos, int fallos, std::string palabra_adi
     }
 }
 
+// Metodo obtener letra
+char obtenerLetra(){
+	char letra;
+	cout << "Ingresa una letra: " << endl;
+	cin >> letra;
+	return letra;
+}
+
+// Metodo comprobar letra
+bool comprobarLetra(char* vector, char letra, int longitud){
+	for(int i = 0; i < longitud; i++){
+		if(vector[i] == letra){
+			// aca habria que hacer un vector de tamaño (longitud) e ir marcando ahi la posicion donde se encuentra la letra que coincide
+		}
+	}
+		
+}
 // Destructor
 Ahorcado::~Ahorcado(){
 	std::cout << std::endl;
