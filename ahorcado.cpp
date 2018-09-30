@@ -1,13 +1,14 @@
 #include "ahorcado.h"
 
-// Constructor con parámetros
+
+// Constructor con parametros
 Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
 	palabra = palabra_adivinar;
 	intentos = cant_int;
 	std::cout << "Constructor con parametros almacenado en la direccion: " << this << std::endl << std::endl;
 }
 
-// Constructor sin parámetros
+// Constructor sin parametros
 Ahorcado::Ahorcado(){
 	palabra = "";
 	intentos = 0;
@@ -15,22 +16,32 @@ Ahorcado::Ahorcado(){
 	
 }
 
-// Método asignarPalabra
+// Metodo asignarPalabra
 void Ahorcado::asignarPalabra(std::string palabra_adivinar){
 	palabra = palabra_adivinar;
 }
 
-// Método asignarIntentos
+// Metodo obtenerVector
+char* obtenerVector(std::string palabra_adivinar){
+	int longitud = palabra_adivinar.lenght();
+	char* vector_palabra = new char[longitud];
+    for(int i = 0; palabra_adivinar[i]; i++){
+	    vector_palabra[i] = palabra_adivinar[i];
+    }
+	return vector_palabra;
+}
+
+// Metodo asignarIntentos
 void Ahorcado::asignarIntentos(int cant_int){
 	intentos = cant_int;
 }
 
-// Método obtenerPalabra
+// Metodo obtenerPalabra
 std::string Ahorcado::obtenerPalabra(){
 	return palabra;
 }
 
-// Método obtenerIntentos
+// Metodo obtenerIntentos
 int Ahorcado::obtenerIntentos(){
 	return intentos;
 }
