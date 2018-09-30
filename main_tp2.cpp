@@ -1,9 +1,8 @@
 #include "ahorcado.cpp"
 using namespace std;
 
-
 void pruebaConParametros();
-//void pruebaSinParametros();
+void pruebaSinParametros();
 
 std::string convertir_mayusculas(std::string palabra);
 
@@ -36,11 +35,9 @@ void pruebaConParametros(){
 	// Prueba de obtencion de vector dinamico en base a string
 	char* vector;
 	vector = juego1.obtenerVector(palabra);
-
-	
+	cout << vector[0] << endl;	
 }
 
-/*
 void pruebaSinParametros(){
 	Ahorcado juego;
 	juego.asignarIntentos(4);
@@ -48,4 +45,4 @@ void pruebaSinParametros(){
 	cout << "Tiene " << juego.obtenerIntentos() << " intentos. " << endl;
 	cout << "La palabra a adivinar es: " << convertir_mayusculas(juego.obtenerPalabra())<< endl;
 }
-*/
+

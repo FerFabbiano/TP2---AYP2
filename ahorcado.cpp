@@ -1,5 +1,5 @@
 #include "ahorcado.h"
-
+#include <string>
 
 // Constructor con parametros
 Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
@@ -22,8 +22,8 @@ void Ahorcado::asignarPalabra(std::string palabra_adivinar){
 }
 
 // Metodo obtenerVector
-char* obtenerVector(std::string palabra_adivinar){
-	int longitud = palabra_adivinar.lenght();
+char* Ahorcado::obtenerVector(std::string palabra_adivinar){
+	int longitud = 4; // palabra_adivinar.lenght();
 	char* vector_palabra = new char[longitud];
     for(int i = 0; palabra_adivinar[i]; i++){
 	    vector_palabra[i] = palabra_adivinar[i];

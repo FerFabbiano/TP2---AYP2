@@ -8,8 +8,6 @@ private:
 	// Atributos
 	std::string palabra;
 	int intentos;
-	int longitud = palabra.length();
-	char *vector_palabra = new char[longitud];
 public:
 	// Metodos
 	
