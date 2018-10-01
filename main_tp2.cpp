@@ -3,7 +3,6 @@ using namespace std;
 
 void pruebaConParametros();
 void pruebaSinParametros();
-
 std::string convertir_mayusculas(std::string palabra);
 
 int main() {
@@ -17,7 +16,7 @@ int main() {
 std::string convertir_mayusculas(std::string palabra){
 	// Convierte y devuelve una palabra a mayusculas iteranto los caracteres.
 	for(int i = 0; palabra[i]; i++) 
-      palabra[i] = toupper(palabra[i]);
+        palabra[i] = toupper(palabra[i]);
     return palabra;
 }
 
@@ -31,11 +30,33 @@ void pruebaConParametros(){
 	
 	cout << "La palabra a adivinar es: " << palabra << endl;
 	cout << "El jugador dispone de " << juego1.obtenerIntentos() << " intentos para adivinar la palabra." << endl;
+	cout << "Longitud de la palabra: " << juego1.obtenerLongitud(palabra);
+
+	// char* vector;
+	// vector = juego1.obtenerVector(palabra, juego1.obtenerLongitud(palabra));
+	
+	juego1.asignarPalabra("chau");
+	juego1.asignarIntentos(8);
+	std::string palabra_nueva = juego1.obtenerPalabra();
+	int nuevo_intentos = juego1.obtenerIntentos();
+	
+	palabra_nueva = convertir_mayusculas(palabra_nueva);
+	
+	cout << endl;
+	cout << "La nueva palabra a adivinar es: " << palabra_nueva << endl;
+	cout << "El jugador dispone de " << nuevo_intentos << " intentos para adivinar la nueva palabra." << endl;
+	int longitud = juego1.obtenerLongitud(palabra_nueva); 
+	cout << "Longitud de la nueva palabra: " << longitud << endl;
+	int cont = 0;
+	do{
+		char letra = juego1.arriesgar();
+		juego1.comprobarIntento(juego1.obtenerVector(palabra_nueva, longitud), letra, longitud);
+		cont += 1;
+	}while(cont < nuevo_intentos);
 	
 	// Prueba de obtencion de vector dinamico en base a string
-	char* vector;
-	vector = juego1.obtenerVector(palabra);
-	cout << vector[0] << endl;	
+	// char* vector;
+	// vector = juego1.obtenerVector(palabra);
 }
 
 void pruebaSinParametros(){
@@ -45,4 +66,3 @@ void pruebaSinParametros(){
 	cout << "Tiene " << juego.obtenerIntentos() << " intentos. " << endl;
 	cout << "La palabra a adivinar es: " << convertir_mayusculas(juego.obtenerPalabra())<< endl;
 }
-
