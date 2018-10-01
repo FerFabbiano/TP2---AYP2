@@ -3,15 +3,14 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Ahorcado{
 private:
     // Atributos
+    
     std::string palabra;
     int intentos;
-    int longitud = palabra.length();
-    char *vector_palabra = new char[longitud];
+    char* vector;
+    char* guiones;
 
 public:
     // Metodos
@@ -21,7 +20,7 @@ public:
     // POST: crea un juego ahorcado, palabara_adivinar es la palabra a adivinar, cant_int es la cantidad de intentos que tiene el jugador.
     Ahorcado(std::string palabra_adivinar, int cant_int);
     
-    //Consructor sin parametros
+    // Consructor sin parametros
     // PRE:
     // POST: crea un juego vacio, con palabra vacia, y cantidad de intentos 0.
     Ahorcado();
@@ -31,30 +30,52 @@ public:
     // POST:
     void asignarPalabra(std::string palabra_adivinar);
     
-    //Metodo obtener vector
-    //PRE:
-    //POST
-    char* obtenerVector(std::string palabra_adivinar);
+    // Metodo obtenerPalabra
+    // PRE:
+    // POST:
+    std::string obtenerPalabra();
     
     // Metodo asignarIntentos
     // PRE:
     // POST:
     void asignarIntentos(int cant_int);
     
-    // Metodo obtenerPalabra
-    // PRE:
-    // POST:
-    std::string obtenerPalabra();
-    
     // Metodo obtenerIntentos
     // PRE:
     // POST:
     int obtenerIntentos();
     
-    // MŽtodo mostrarAhorcado
+    
+    // Metodo obtenerLongitud
+    // PRE: recibe la palabra ingresada en forma de string
+    // POST: devuelve la longitud de la palabra
+    int obtenerLongitud();
+    
+    // Metodo ingresarLetra
     // PRE:
     // POST:
-    void mostrarAhorcado(int intentos, int fallos, std::string palabra_adivinar);
+    char ingresarLetra();
+    
+    // Metodo ingresarPalabra
+    std::string ingresarPalabra();
+    
+    // Metodo pasarMayusculas
+    std::string pasarMayusculas(std::string palabra);
+    
+    // Metodo mostrarTurno
+    void mostrarTurno(int fallos);
+    
+    // Metodo checkPalabra
+    bool checkPalabra(std::string palabra_ingresada);
+    
+    // Metodo checkLetra
+    bool checkLetra(char letra);
+    
+    // Metodo jugar
+    bool jugar();
+    
+    // Metodo mensajeFinal
+    void mensaje_final(bool mensaje);
     
     // Destructor
     ~Ahorcado();
@@ -62,3 +83,4 @@ public:
 };
 
 #endif // ahorcado_h
+
