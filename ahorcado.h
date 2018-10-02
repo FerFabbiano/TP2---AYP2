@@ -70,7 +70,10 @@ public:
     
     // Metodo checkLetra
     bool checkLetra(char letra);
-    
+
+    // Metodo checkSiGanaste
+    bool checkSiGanaste();
+
     // Metodo jugar
     bool jugar();
     

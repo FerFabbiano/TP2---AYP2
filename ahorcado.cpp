@@ -90,6 +90,15 @@ bool Ahorcado::checkLetra(char letra){
     return respuesta;
 }
 
+bool Ahorcado::checkSiGanaste(){
+    for (int i = 0; i < palabra.length(); i++) {
+        if (guiones[i] == '_'){
+            return false;
+        }
+    }
+    return true;
+}
+
 // Metodo pasarMayusculas
 std::string Ahorcado::pasarMayusculas(std::string palabra){
     for(int i = 0; palabra[i]; i++)
@@ -141,7 +150,10 @@ bool Ahorcado::jugar(){
         if (respuesta == false) {
             ++fallos;
         }
-        
+
+        if (checkSiGanaste() == true){
+            return true;
+        }
     }
     return false;
 }
