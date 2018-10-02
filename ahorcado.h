@@ -11,6 +11,7 @@ private:
     int intentos;
     char* vector;
     char* guiones;
+    int longitud;
 
 public:
     // Metodos
@@ -63,21 +64,33 @@ public:
     std::string pasarMayusculas(std::string palabra);
     
     // Metodo mostrarTurno
+    // PRE:
+    // POST:
     void mostrarTurno(int fallos);
     
-    // Metodo checkPalabra
-    bool checkPalabra(std::string palabra_ingresada);
+    // Metodo checkIntento
+    // PRE:
+    // POST:
+    bool checkIntento(std::string palabra_ingresada);
     
-    // Metodo checkLetra
-    bool checkLetra(char letra);
+    // Metodo checkIntento
+    // PRE:
+    // POST:
+    bool checkIntento(char letra);
 
     // Metodo checkSiGanaste
+    // PRE:
+    // POST:
     bool checkSiGanaste();
 
     // Metodo jugar
+    // PRE:
+    // POST:
     bool jugar();
     
     // Metodo mensajeFinal
+    // PRE:
+    // POST:
     void mensaje_final(bool mensaje);
     
     // Destructor

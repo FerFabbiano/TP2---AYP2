@@ -10,6 +10,7 @@ Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
         vector[i] = palabra[i];
         guiones[i] = '_';
     }
+    longitud = palabra.length();
     std::cout << "Constructor con parametros almacenado en la direccion: " << this << std::endl << std::endl;
 }
 
@@ -23,8 +24,8 @@ Ahorcado::Ahorcado(){
 // Metodo asignarPalabra
 void Ahorcado::asignarPalabra(std::string palabra_adivinar){
     palabra = palabra_adivinar;
-    vector = new char[palabra.length()];
-    for (int i = 0; i<palabra.length(); i++) {
+    vector = new char[longitud];
+    for (int i = 0; i < longitud; i++) {
         vector[i] = palabra[i];
         guiones[i] = '_';
     }
@@ -37,7 +38,7 @@ std::string Ahorcado::obtenerPalabra(){
 
 // Metodo obtenerLongitud
 int Ahorcado::obtenerLongitud(){
-    return palabra.length();
+    return longitud;
 }
 
 // Metodo asignarIntentos
@@ -68,8 +69,8 @@ std::string Ahorcado::ingresarPalabra(){
     return pasarMayusculas(palabra_ingresada);
 }
 
-// Metodo checkPalabra
-bool Ahorcado::checkPalabra(std::string palabra_ingresada){
+// Metodo checkIntento
+bool Ahorcado::checkIntento(std::string palabra_ingresada){
     for (int i = 0; i<palabra.length(); i++) {
         if (palabra_ingresada[i] != vector[i]) {
             return false;
@@ -78,8 +79,8 @@ bool Ahorcado::checkPalabra(std::string palabra_ingresada){
     return true;
 }
 
-// Metodo checkLetra
-bool Ahorcado::checkLetra(char letra){
+// Metodo checkIntento
+bool Ahorcado::checkIntento(char letra){
     bool respuesta = false;
     for (int i = 0; i<palabra.length(); i++) {
         if (letra == vector[i]) {
@@ -91,7 +92,7 @@ bool Ahorcado::checkLetra(char letra){
 }
 
 bool Ahorcado::checkSiGanaste(){
-    for (int i = 0; i < palabra.length(); i++) {
+    for (int i = 0; i < longitud; i++) {
         if (guiones[i] == '_'){
             return false;
         }
@@ -109,15 +110,14 @@ std::string Ahorcado::pasarMayusculas(std::string palabra){
 // Metodo mostrarTurno
 void Ahorcado::mostrarTurno(int fallos){
     std::cout<<"Palabra: ";
-    for (int i = 0; i<palabra.length(); i++) {
-        std::cout<<guiones[i];
+    for (int i = 0; i < longitud; i++) {
+        std::cout << guiones[i];
     }
     std::cout<<std::endl;
     
-    std::cout<<"Fallos: "<<fallos<<"/"<<intentos;
+    std::cout << "Fallos: " << fallos << "/" << intentos;
     
-    std::cout<<std::endl;
-    
+    std::cout << std::endl;
 }
 
 // Metodo jugar
@@ -137,11 +137,11 @@ bool Ahorcado::jugar(){
         
         if (opcion == 1) {
             letra = ingresarLetra();
-            respuesta = checkLetra(letra);
+            respuesta = checkIntento(letra);
         }
         
         else{
-            if (checkPalabra(ingresarPalabra()) == true) {
+            if (checkIntento(ingresarPalabra()) == true) {
                 return true;
             }
             return false;
