@@ -127,13 +127,13 @@ bool Ahorcado::jugar(){
     char letra;
     bool respuesta;
     
-    while (fallos <= intentos) {
+    while (fallos < intentos) {
         mostrarTurno(fallos);
         
-        std::cout<<"1) Ingresar una letra"<<std::endl<<"2) Ingresar palabra completa"<<std::endl;
-        std::cout<<"Ingrese una de las opciones: ";
-        std::cin>>opcion;
-        std::cout<<std::endl;
+        std::cout << "1) Ingresar una letra"<<std::endl<<"2) Ingresar palabra completa"<<std::endl;
+        std::cout << "Ingrese una de las opciones: ";
+        std::cin >> opcion;
+        std::cout << std::endl;
         
         if (opcion == 1) {
             letra = ingresarLetra();
@@ -160,10 +160,10 @@ bool Ahorcado::jugar(){
 
 void Ahorcado::mensaje_final(bool mensaje){
     if (mensaje == true) {
-        std::cout<<"Felicidades, ganaste el juego!!"<<std::endl;
+        std::cout << "Felicidades, ganaste el juego!!"<<std::endl;
     }
     else{
-        std::cout<<"Perdiste el juego."<<std::endl;
+        std::cout << "Perdiste el juego."<<std::endl;
     }
 }
 
