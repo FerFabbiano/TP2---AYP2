@@ -1,4 +1,4 @@
-#include "ahorcado.cpp"
+#include "ahorcado.h"
 
 // Constructor con parametros
 Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
@@ -179,6 +179,10 @@ void Ahorcado::mensaje_final(bool mensaje){
 
 // Destructor
 Ahorcado::~Ahorcado(){
+    delete [] vector;
+    delete [] guiones;
+    delete [] utilizadas;
+    
     std::cout << std::endl;
     std::cout << "Destructor almacenado en la direccion: " << this << std::endl << std::endl;
 }
