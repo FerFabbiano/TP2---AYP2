@@ -1,16 +1,17 @@
-#include "ahorcado.h"
+#include "ahorcado.cpp"
 
 // Constructor con parametros
 Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
     palabra = pasarMayusculas(palabra_adivinar);
     intentos = cant_int;
-    vector = new char[palabra.length()];
-    guiones = new char[palabra.length()];
-    for (int i = 0; i<palabra.length(); i++) {
+    longitud = palabra.length();
+    utilizadas = new char[intentos + longitud];
+    vector = new char[longitud];
+    guiones = new char[longitud];
+    for (int i = 0; i<longitud; i++) {
         vector[i] = palabra[i];
         guiones[i] = '_';
     }
-    longitud = palabra.length();
     std::cout << "Constructor con parametros almacenado en la direccion: " << this << std::endl << std::endl;
 }
 
@@ -71,7 +72,7 @@ std::string Ahorcado::ingresarPalabra(){
 
 // Metodo checkIntento
 bool Ahorcado::checkIntento(std::string palabra_ingresada){
-    for (int i = 0; i<palabra.length(); i++) {
+    for (int i = 0; i<longitud; i++) {
         if (palabra_ingresada[i] != vector[i]) {
             return false;
         }
@@ -82,7 +83,7 @@ bool Ahorcado::checkIntento(std::string palabra_ingresada){
 // Metodo checkIntento
 bool Ahorcado::checkIntento(char letra){
     bool respuesta = false;
-    for (int i = 0; i<palabra.length(); i++) {
+    for (int i = 0; i<longitud; i++) {
         if (letra == vector[i]) {
             respuesta = true;
             guiones[i] = letra;
@@ -115,7 +116,13 @@ void Ahorcado::mostrarTurno(int fallos){
     }
     std::cout<<std::endl;
     
-    std::cout << "Fallos: " << fallos << "/" << intentos;
+    std::cout << "Fallos: " << fallos << "/" << intentos << std::endl;
+    
+    std::cout << "Utilizadas: ";
+    
+    for (int i = 0; i<=intentos + longitud; i++) {
+        std::cout << utilizadas[i] << " ";
+    }
     
     std::cout << std::endl;
 }
@@ -126,6 +133,7 @@ bool Ahorcado::jugar(){
     int opcion;
     char letra;
     bool respuesta;
+    int contador = 0;
     
     while (fallos < intentos) {
         mostrarTurno(fallos);
@@ -137,6 +145,8 @@ bool Ahorcado::jugar(){
         
         if (opcion == 1) {
             letra = ingresarLetra();
+            utilizadas[contador] = letra;
+            contador++;
             respuesta = checkIntento(letra);
         }
         
@@ -150,7 +160,7 @@ bool Ahorcado::jugar(){
         if (respuesta == false) {
             ++fallos;
         }
-
+        
         if (checkSiGanaste() == true){
             return true;
         }
@@ -160,7 +170,7 @@ bool Ahorcado::jugar(){
 
 void Ahorcado::mensaje_final(bool mensaje){
     if (mensaje == true) {
-        std::cout << "Felicidades, ganaste el juego!!"<<std::endl;
+        std::cout << "Felicidades, ganaste el juego!!, la palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
     else{
         std::cout << "Perdiste el juego."<<std::endl;
@@ -172,6 +182,5 @@ Ahorcado::~Ahorcado(){
     std::cout << std::endl;
     std::cout << "Destructor almacenado en la direccion: " << this << std::endl << std::endl;
 }
-
 
 

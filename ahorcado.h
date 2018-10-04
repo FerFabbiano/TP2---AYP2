@@ -11,8 +11,9 @@ private:
     int intentos;
     char* vector;
     char* guiones;
+    char* utilizadas;
     int longitud;
-
+    
 public:
     // Metodos
     
@@ -77,12 +78,12 @@ public:
     // PRE:
     // POST:
     bool checkIntento(char letra);
-
+    
     // Metodo checkSiGanaste
     // PRE:
     // POST:
     bool checkSiGanaste();
-
+    
     // Metodo jugar
     // PRE:
     // POST:
@@ -99,4 +100,3 @@ public:
 };
 
 #endif // ahorcado_h
-
