@@ -103,7 +103,6 @@ bool Ahorcado::checkSiGanaste(){
 
 // Metodo mostrarTurno
 void Ahorcado::mostrarTurno(int fallos){
-    
     std::cout<<"Palabra: ";
     for (int i = 0; i < longitud; i++) {
         std::cout << guiones[i];
@@ -123,7 +122,9 @@ void Ahorcado::mostrarTurno(int fallos){
 
 // Metodo jugar
 bool Ahorcado::jugar(){
-    int fallos = 0;
+    system ("color 17");
+	// SetConsoleTitle("Ahorcado");
+	int fallos = 0;
     int opcion;
     char letra;
     bool respuesta;

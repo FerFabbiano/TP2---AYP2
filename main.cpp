@@ -1,5 +1,5 @@
-#include "ahorcado.h"
-
+#include "ahorcado.cpp"
+#include <iostream>
 using namespace std;
 
 int main() {

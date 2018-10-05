@@ -1,7 +1,8 @@
+#include <iostream>
 #ifndef ahorcado_INCLUDED
 #define ahorcado_INCLUDED
-#include <iostream>
 #include <string>
+#include <stdio.h>
 
 std::string pasarMayusculas(std::string palabra);
 
