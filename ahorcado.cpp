@@ -101,15 +101,9 @@ bool Ahorcado::checkSiGanaste(){
     return true;
 }
 
-// Metodo pasarMayusculas
-std::string Ahorcado::pasarMayusculas(std::string palabra){
-    for(int i = 0; palabra[i]; i++)
-        palabra[i] = toupper(palabra[i]);
-    return palabra;
-}
-
 // Metodo mostrarTurno
 void Ahorcado::mostrarTurno(int fallos){
+    
     std::cout<<"Palabra: ";
     for (int i = 0; i < longitud; i++) {
         std::cout << guiones[i];

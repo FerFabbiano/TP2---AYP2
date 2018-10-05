@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+std::string pasarMayusculas(std::string palabra);
+
 class Ahorcado{
 private:
     // Atributos
@@ -60,9 +62,6 @@ public:
     
     // Metodo ingresarPalabra
     std::string ingresarPalabra();
-    
-    // Metodo pasarMayusculas
-    std::string pasarMayusculas(std::string palabra);
     
     // Metodo mostrarTurno
     // PRE:
