@@ -22,7 +22,6 @@ Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
 Ahorcado::Ahorcado(){
     palabra = leerLinea(randomLinea());
     palabra = pasarMayusculas(palabra);
-    std::cout << palabra << std::endl;
     intentos = 5;
     longitud = palabra.length();
     utilizadas = new char[intentos + longitud];
@@ -46,15 +45,15 @@ std::string Ahorcado::pasarMayusculas(std::string palabra){
 
 // Metodo randomLinea
 int Ahorcado::randomLinea(){
-    int randNum = 10;
-    std::cout << randNum << std::endl;
+    srand(time(0));
+    int randNum = rand()%1000;
     return randNum;
 }
 
 // Metodo leerLinea
 std::string Ahorcado::leerLinea(int nroLinea){
     std::ifstream archivo;
-    archivo.open("palabras.txt");
+    archivo.open("/Users/joaquinandresen/Desktop/Programación/Algoritmos y Programación II/TP2/TP2/palabras.txt");
     std::string linea;
     for (int i = 0; i<nroLinea; i++) {
         getline(archivo, linea);
