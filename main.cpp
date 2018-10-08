@@ -1,4 +1,4 @@
-#include "ahorcado.h"
+#include "ahorcado.cpp"
 
 int main() {
     

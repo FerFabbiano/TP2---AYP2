@@ -53,7 +53,7 @@ int Ahorcado::randomLinea(){
 // Metodo leerLinea
 std::string Ahorcado::leerLinea(int nroLinea){
     std::ifstream archivo;
-    archivo.open("/Users/joaquinandresen/Desktop/Programación/Algoritmos y Programación II/TP2/TP2/palabras.txt");
+    archivo.open("palabras.txt");
     std::string linea;
     for (int i = 0; i<nroLinea; i++) {
         getline(archivo, linea);
