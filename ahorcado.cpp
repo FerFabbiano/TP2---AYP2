@@ -8,7 +8,7 @@ Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
     utilizadas = new char[intentos + longitud];
     vector = new char[longitud];
     guiones = new char[longitud];
-    for (int i = 0; i<longitud; i++) {
+    for (int i = 0; i < longitud; i++) {
         vector[i] = palabra[i];
         guiones[i] = '_';
     }
@@ -20,9 +20,11 @@ Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
 
 // Constructor sin parametros
 Ahorcado::Ahorcado(){
+	std::cout << "Constructor sin parametros almacenado en la direccion: " << this << std::endl << std::endl;
     palabra = leerLinea(randomLinea());
     palabra = pasarMayusculas(palabra);
-    intentos = 5;
+    std::cout << "Ingrese la cantidad de intentos que desea tener para adivinar: " << std::endl;
+	std::cin >> intentos;
     longitud = palabra.length();
     utilizadas = new char[intentos + longitud];
     vector = new char[longitud];
@@ -34,7 +36,6 @@ Ahorcado::Ahorcado(){
     for (int i = 0; i<=longitud + intentos; i++) {
         utilizadas[i] = ' ';
     }
-    std::cout << "Constructor sin parametros almacenado en la direccion: " << this << std::endl << std::endl;
 }
 
 std::string Ahorcado::pasarMayusculas(std::string palabra){
@@ -55,7 +56,7 @@ std::string Ahorcado::leerLinea(int nroLinea){
     std::ifstream archivo;
     archivo.open("palabras.txt");
     std::string linea;
-    for (int i = 0; i<nroLinea; i++) {
+    for (int i = 0; i < nroLinea; i++) {
         getline(archivo, linea);
     }
     archivo.close();
@@ -104,15 +105,15 @@ char Ahorcado::ingresarLetra(){
 std::string Ahorcado::ingresarPalabra(){
     std::string palabra_ingresada;
     
-    std::cout<<"Ingrese la palabra: ";
-    std::cin>>palabra_ingresada;
+    std::cout << "Ingrese la palabra: ";
+    std::cin >> palabra_ingresada;
     
     return pasarMayusculas(palabra_ingresada);
 }
 
 // Metodo checkIntento
 bool Ahorcado::checkIntento(std::string palabra_ingresada){
-    for (int i = 0; i<longitud; i++) {
+    for (int i = 0; i < longitud; i++) {
         if (palabra_ingresada[i] != vector[i]) {
             return false;
         }
@@ -132,6 +133,7 @@ bool Ahorcado::checkIntento(char letra){
     return respuesta;
 }
 
+// Método checkSiGanaste
 bool Ahorcado::checkSiGanaste(){
     for (int i = 0; i < longitud; i++) {
         if (guiones[i] == '_'){
@@ -154,7 +156,7 @@ void Ahorcado::mostrarTurno(int fallos){
     
     std::cout << "Utilizadas: ";
     
-    for (int i = 0; i<=intentos + longitud; i++) {
+    for (int i = 0; i <= intentos + longitud; i++) {
         std::cout << utilizadas[i] << " ";
     }
     
@@ -168,11 +170,12 @@ bool Ahorcado::jugar(){
     char letra;
     bool respuesta;
     int contador = 0;
+    std::string pregunta;
     
     while (fallos < intentos) {
         mostrarTurno(fallos);
         
-        std::cout << "1) Ingresar una letra"<<std::endl<<"2) Ingresar palabra completa"<<std::endl;
+        std::cout << "1) Ingresar una letra" << std::endl << "2) Ingresar palabra completa" << std::endl;
         std::cout << "Ingrese una de las opciones: ";
         std::cin >> opcion;
         std::cout << std::endl;
@@ -180,19 +183,30 @@ bool Ahorcado::jugar(){
         if (opcion == 1) {
             letra = ingresarLetra();
             utilizadas[contador] = letra;
-            contador++;
+            contador ++;
             respuesta = checkIntento(letra);
         }
         
         else{
-            if (checkIntento(ingresarPalabra()) == true) {
-                return true;
-            }
-            return false;
-        }
+        	std::cout << "ATENCION! Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? s/n";
+			std::cout << std::endl;
+        	std::cin >> pregunta;
+        	if (pregunta == "n"){
+        		letra = ingresarLetra();
+            	utilizadas[contador] = letra;
+            	contador ++;
+            	respuesta = checkIntento(letra);
+			}
+			else{
+            	if (checkIntento(ingresarPalabra()) == true) {
+                	return true;
+            	}
+            	return false;
+        	}	
+    	}	
         
         if (respuesta == false) {
-            ++fallos;
+            ++ fallos;
         }
         
         if (checkSiGanaste() == true){

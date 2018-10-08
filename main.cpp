@@ -2,7 +2,6 @@
 
 int main() {
     
-    
     // Se crea el objeto juego.
     Ahorcado juego1;
     
