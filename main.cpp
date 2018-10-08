@@ -1,11 +1,9 @@
-#include "ahorcado.cpp"
-#include <iostream>
-using namespace std;
+#include "ahorcado.h"
 
 int main() {
     
     // Se crea el objeto juego.
-    Ahorcado juego1("hola", 3);
+    Ahorcado juego1;
     
     juego1.mensaje_final(juego1.jugar());
     

@@ -12,14 +12,55 @@ Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
         vector[i] = palabra[i];
         guiones[i] = '_';
     }
+    for (int i = 0; i<=longitud + intentos; i++) {
+        utilizadas[i] = ' ';
+    }
     std::cout << "Constructor con parametros almacenado en la direccion: " << this << std::endl << std::endl;
 }
 
 // Constructor sin parametros
 Ahorcado::Ahorcado(){
-    palabra = "";
-    intentos = 0;
+    palabra = leerLinea(randomLinea());
+    palabra = pasarMayusculas(palabra);
+    std::cout << palabra << std::endl;
+    intentos = 5;
+    longitud = palabra.length();
+    utilizadas = new char[intentos + longitud];
+    vector = new char[longitud];
+    guiones = new char[longitud];
+    for (int i = 0; i<longitud; i++) {
+        vector[i] = palabra[i];
+        guiones[i] = '_';
+    }
+    for (int i = 0; i<=longitud + intentos; i++) {
+        utilizadas[i] = ' ';
+    }
     std::cout << "Constructor sin parametros almacenado en la direccion: " << this << std::endl << std::endl;
+}
+
+std::string Ahorcado::pasarMayusculas(std::string palabra){
+    for(int i = 0; palabra[i]; i++)
+        palabra[i] = toupper(palabra[i]);
+    return palabra;
+}
+
+// Metodo randomLinea
+int Ahorcado::randomLinea(){
+    int randNum = 10;
+    std::cout << randNum << std::endl;
+    return randNum;
+}
+
+// Metodo leerLinea
+std::string Ahorcado::leerLinea(int nroLinea){
+    std::ifstream archivo;
+    archivo.open("palabras.txt");
+    std::string linea;
+    for (int i = 0; i<nroLinea; i++) {
+        getline(archivo, linea);
+    }
+    archivo.close();
+    return linea;
 }
 
 // Metodo asignarPalabra
@@ -103,6 +144,7 @@ bool Ahorcado::checkSiGanaste(){
 
 // Metodo mostrarTurno
 void Ahorcado::mostrarTurno(int fallos){
+    
     std::cout<<"Palabra: ";
     for (int i = 0; i < longitud; i++) {
         std::cout << guiones[i];
@@ -122,9 +164,7 @@ void Ahorcado::mostrarTurno(int fallos){
 
 // Metodo jugar
 bool Ahorcado::jugar(){
-    system ("color 17");
-	// SetConsoleTitle("Ahorcado");
-	int fallos = 0;
+    int fallos = 0;
     int opcion;
     char letra;
     bool respuesta;
@@ -181,5 +221,3 @@ Ahorcado::~Ahorcado(){
     std::cout << std::endl;
     std::cout << "Destructor almacenado en la direccion: " << this << std::endl << std::endl;
 }
-
-

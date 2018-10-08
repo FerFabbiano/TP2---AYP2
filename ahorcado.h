@@ -1,10 +1,8 @@
-#include <iostream>
 #ifndef ahorcado_INCLUDED
 #define ahorcado_INCLUDED
+#include <iostream>
 #include <string>
-#include <stdio.h>
-
-std::string pasarMayusculas(std::string palabra);
+#include <fstream>
 
 class Ahorcado{
 private:
@@ -25,7 +23,7 @@ public:
     // POST: crea un juego ahorcado, palabara_adivinar es la palabra a adivinar, cant_int es la cantidad de intentos que tiene el jugador.
     Ahorcado(std::string palabra_adivinar, int cant_int);
     
-    // Consructor sin parametros
+    // Constructor sin parametros
     // PRE:
     // POST: crea un juego vacio, con palabra vacia, y cantidad de intentos 0.
     Ahorcado();
@@ -39,6 +37,8 @@ public:
     // PRE:
     // POST:
     std::string obtenerPalabra();
+    
+    std::string pasarMayusculas(std::string palabra);
     
     // Metodo asignarIntentos
     // PRE:
@@ -93,6 +93,12 @@ public:
     // PRE:
     // POST:
     void mensaje_final(bool mensaje);
+    
+    // Metodo leerLinea
+    std::string leerLinea(int nroLinea);
+    
+    // Metodo randomLinea
+    int randomLinea();
     
     // Destructor
     ~Ahorcado();
