@@ -4,11 +4,9 @@
 #include <string>
 #include <fstream>
 #include <ctime>
-#include <cstdlib> // libreria agregada para que corra en Dev c++
+#include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
-
-
 
 class Ahorcado{
 private:
@@ -73,9 +71,9 @@ public:
     std::string ingresarPalabra();
     
     // Metodo mostrarTurno
-    // PRE: Recibe la cantidad de fallos que puede tener el usuario para adivinar la palabra.
+    // PRE: ---
     // POST: Imprime por pantalla la cantidad de fallos que le quedan al usuario, la palabra con las letras que adivino y las letras utilizadas.
-    void mostrarTurno(int fallos);
+    void mostrarTurno(float fallos);
     
     // Metodo checkIntento
     // PRE: Recibe un string valido con la palabra que arriesgo el usuario.
@@ -113,9 +111,14 @@ public:
     // POST: Devuelve un número aleatorio, que representa el número de linea en el que se buscará la palabra a adivinar.
     int randomLinea();
     
+    void mostrarAhorcado(float fallos);
+    
+    // Metodo convertirSumando
+    float convertirSumando(float sumando);
+    
     // Destructor
     ~Ahorcado();
     
 };
 
-#endif // ahorcado_h
+#endif

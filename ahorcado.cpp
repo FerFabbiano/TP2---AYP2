@@ -1,4 +1,5 @@
 #include "ahorcado.h"
+#include "funciones.h"
 
 // Constructor con parametros
 Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
@@ -36,12 +37,6 @@ Ahorcado::Ahorcado(){
     for (int i = 0; i<=longitud + intentos; i++) {
         utilizadas[i] = ' ';
     }
-}
-
-std::string Ahorcado::pasarMayusculas(std::string palabra){
-    for(int i = 0; palabra[i]; i++)
-        palabra[i] = toupper(palabra[i]);
-    return palabra;
 }
 
 // Metodo randomLinea
@@ -144,7 +139,7 @@ bool Ahorcado::checkSiGanaste(){
 }
 
 // Metodo mostrarTurno
-void Ahorcado::mostrarTurno(int fallos){
+void Ahorcado::mostrarTurno(float fallos){
     
     std::cout<<"Palabra: ";
     for (int i = 0; i < longitud; i++) {
@@ -165,15 +160,19 @@ void Ahorcado::mostrarTurno(int fallos){
 
 // Metodo jugar
 bool Ahorcado::jugar(){
-    int fallos = 0;
+    float fallos = 0.0;
+    int fallos_enteros = 0;
+    float sumando = 0.0;
+    sumando = convertirSumando(sumando);
     int opcion;
     char letra;
     bool respuesta;
     int contador = 0;
     std::string pregunta;
     
-    while (fallos < intentos) {
-        mostrarTurno(fallos);
+    while (fallos <= 6) {
+        mostrarAhorcado(fallos);
+        mostrarTurno(fallos_enteros);
         
         std::cout << "1) Ingresar una letra" << std::endl << "2) Ingresar palabra completa" << std::endl;
         std::cout << "Ingrese una de las opciones: ";
@@ -188,7 +187,7 @@ bool Ahorcado::jugar(){
         }
         
         else{
-            std::cout << "ATENCION! Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? s/n";
+            std::cout << "ATENCION! Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? (s/n)";
             std::cout << std::endl;
             std::cin >> pregunta;
             if (pregunta == "n"){
@@ -206,23 +205,128 @@ bool Ahorcado::jugar(){
         }
         
         if (respuesta == false) {
-            ++ fallos;
+            ++fallos_enteros;
+            fallos = fallos + sumando;
         }
         
         if (checkSiGanaste() == true){
             return true;
         }
     }
+    std::cout << std::endl;
+    mostrarAhorcado(fallos);
     return false;
 }
 
 void Ahorcado::mensaje_final(bool mensaje){
     if (mensaje == true) {
+        std::cout << std::endl;
         std::cout << "Felicidades, ganaste el juego!!, la palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
     else{
         std::cout << "Perdiste el juego.La palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
+}
+
+void Ahorcado::mostrarAhorcado(float fallos){
+    std::string linea0 = " --------";
+    std::string linea01 = "|";
+    std::string linea1 = "|      -|-";
+    std::string linea2 = "|     |   |";
+    std::string linea3 = "|     |___|";
+    std::string linea4 = "|       |";
+    std::string linea51 = "|    ---|";
+    std::string linea5 = "|    ---|---";
+    std::string linea6 = "|       |";
+    std::string linea71 = "|      /";
+    std::string linea7 = "|      / \\";
+    std::string linea8 = "|     /   \\";
+    std::string linea81 = "|     /";
+    
+    if (fallos >= 0 && fallos < 1) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+    }
+    if (fallos >= 1 && fallos < 2) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea1 << std::endl;
+        std::cout << linea2 << std::endl;
+        std::cout << linea3 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+    }
+    if (fallos >= 2 && fallos < 3) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea1 << std::endl;
+        std::cout << linea2 << std::endl;
+        std::cout << linea3 << std::endl;
+        std::cout << linea4 << std::endl;
+        std::cout << linea4 << std::endl;
+        std::cout << linea6 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+    }
+    if (fallos >= 3 && fallos < 4) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea1 << std::endl;
+        std::cout << linea2 << std::endl;
+        std::cout << linea3 << std::endl;
+        std::cout << linea4 << std::endl;
+        std::cout << linea51 << std::endl;
+        std::cout << linea6 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+    }
+    if (fallos >= 4 && fallos < 5) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea1 << std::endl;
+        std::cout << linea2 << std::endl;
+        std::cout << linea3 << std::endl;
+        std::cout << linea4 << std::endl;
+        std::cout << linea5 << std::endl;
+        std::cout << linea6 << std::endl;
+        std::cout << linea01 << std::endl;
+        std::cout << linea01 << std::endl;
+    }
+    if (fallos >= 5 && fallos < 6) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea1 << std::endl;
+        std::cout << linea2 << std::endl;
+        std::cout << linea3 << std::endl;
+        std::cout << linea4 << std::endl;
+        std::cout << linea5 << std::endl;
+        std::cout << linea6 << std::endl;
+        std::cout << linea71 << std::endl;
+        std::cout << linea81 << std::endl;
+    }
+    if (fallos >= 6) {
+        std::cout << linea0 << std::endl;
+        std::cout << linea1 << std::endl;
+        std::cout << linea2 << std::endl;
+        std::cout << linea3 << std::endl;
+        std::cout << linea4 << std::endl;
+        std::cout << linea5 << std::endl;
+        std::cout << linea6 << std::endl;
+        std::cout << linea7 << std::endl;
+        std::cout << linea8 << std::endl;
+    }
+    std::cout << std::endl;
+}
+ 
+// Metodo convertirSumando
+float Ahorcado::convertirSumando(float sumando){
+    sumando = 6.0/intentos;
+    return sumando;
 }
 
 // Destructor
