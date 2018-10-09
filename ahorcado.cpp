@@ -171,6 +171,7 @@ bool Ahorcado::jugar(){
     std::string pregunta;
     
     while (fallos <= 6) {
+        textcolor(GREEN);
         mostrarAhorcado(fallos);
         mostrarTurno(fallos_enteros);
         
@@ -187,8 +188,10 @@ bool Ahorcado::jugar(){
         }
         
         else{
-            std::cout << "ATENCION! Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? (s/n)";
-            std::cout << std::endl;
+            textcolor(RED);
+            std::cout << "ATENCION! ";
+            textcolor(GREEN);
+            std::cout << "Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? (s/n) ";
             std::cin >> pregunta;
             if (pregunta == "n"){
                 letra = ingresarLetra();
@@ -214,6 +217,7 @@ bool Ahorcado::jugar(){
         }
     }
     std::cout << std::endl;
+    textcolor(RED);
     mostrarAhorcado(fallos);
     return false;
 }
@@ -221,10 +225,11 @@ bool Ahorcado::jugar(){
 void Ahorcado::mensaje_final(bool mensaje){
     if (mensaje == true) {
         std::cout << std::endl;
+        textcolor(BLUE);
         std::cout << "Felicidades, ganaste el juego!!, la palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
     else{
-        std::cout << "Perdiste el juego.La palabra a adivinar era: "<<palabra<<"."<<std::endl;
+        std::cout << "Perdiste el juego. La palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
 }
 

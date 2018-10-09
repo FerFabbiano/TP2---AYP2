@@ -17,13 +17,6 @@ int main() {
     
     resultado = juego1.jugar();
     
-    if (resultado == false) {
-        textcolor(RED);
-    }
-    else{
-        textcolor(BLUE);
-    }
-    
     juego1.mensaje_final(resultado);
     
     return 0;
