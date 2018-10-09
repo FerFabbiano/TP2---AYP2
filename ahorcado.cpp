@@ -20,11 +20,11 @@ Ahorcado::Ahorcado(std::string palabra_adivinar, int cant_int){
 
 // Constructor sin parametros
 Ahorcado::Ahorcado(){
-	std::cout << "Constructor sin parametros almacenado en la direccion: " << this << std::endl << std::endl;
+    std::cout << "Constructor sin parametros almacenado en la direccion: " << this << std::endl << std::endl;
     palabra = leerLinea(randomLinea());
     palabra = pasarMayusculas(palabra);
-    std::cout << "Ingrese la cantidad de intentos que desea tener para adivinar: " << std::endl;
-	std::cin >> intentos;
+    std::cout << "Ingrese la cantidad de intentos que desea tener para adivinar: ";
+    std::cin >> intentos;
     longitud = palabra.length();
     utilizadas = new char[intentos + longitud];
     vector = new char[longitud];
@@ -47,7 +47,7 @@ std::string Ahorcado::pasarMayusculas(std::string palabra){
 // Metodo randomLinea
 int Ahorcado::randomLinea(){
     srand(time(0));
-    int randNum = rand()%1000;
+    int randNum = rand()%14279;
     return randNum;
 }
 
@@ -133,7 +133,7 @@ bool Ahorcado::checkIntento(char letra){
     return respuesta;
 }
 
-// Método checkSiGanaste
+// MÃ©todo checkSiGanaste
 bool Ahorcado::checkSiGanaste(){
     for (int i = 0; i < longitud; i++) {
         if (guiones[i] == '_'){
@@ -188,22 +188,22 @@ bool Ahorcado::jugar(){
         }
         
         else{
-        	std::cout << "ATENCION! Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? s/n";
-			std::cout << std::endl;
-        	std::cin >> pregunta;
-        	if (pregunta == "n"){
-        		letra = ingresarLetra();
-            	utilizadas[contador] = letra;
-            	contador ++;
-            	respuesta = checkIntento(letra);
-			}
-			else{
-            	if (checkIntento(ingresarPalabra()) == true) {
-                	return true;
-            	}
-            	return false;
-        	}	
-    	}	
+            std::cout << "ATENCION! Si ingresa mal la palabra, perdera el juego! Desea arriesgar la palabra igual? s/n";
+            std::cout << std::endl;
+            std::cin >> pregunta;
+            if (pregunta == "n"){
+                letra = ingresarLetra();
+                utilizadas[contador] = letra;
+                contador ++;
+                respuesta = checkIntento(letra);
+            }
+            else{
+                if (checkIntento(ingresarPalabra()) == true) {
+                    return true;
+                }
+                return false;
+            }
+        }
         
         if (respuesta == false) {
             ++ fallos;
@@ -221,7 +221,7 @@ void Ahorcado::mensaje_final(bool mensaje){
         std::cout << "Felicidades, ganaste el juego!!, la palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
     else{
-        std::cout << "Perdiste el juego."<<std::endl;
+        std::cout << "Perdiste el juego.La palabra a adivinar era: "<<palabra<<"."<<std::endl;
     }
 }
 
