@@ -30,11 +30,11 @@ Ahorcado::Ahorcado(){
     utilizadas = new char[intentos + longitud];
     vector = new char[longitud];
     guiones = new char[longitud];
-    for (int i = 0; i<longitud; i++) {
+    for (int i = 0; i < longitud; i++) {
         vector[i] = palabra[i];
         guiones[i] = '_';
     }
-    for (int i = 0; i<=longitud + intentos; i++) {
+    for (int i = 0; i <= longitud + intentos; i++) {
         utilizadas[i] = ' ';
     }
 }

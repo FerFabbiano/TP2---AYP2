@@ -1,8 +1,5 @@
-#include "ahorcado.cpp"
-#include "funciones.cpp"
-
-void textcolor(int colorLetra);
-std::string pasarMayusculas(std::string palabra);
+#include "ahorcado.h"
+#include "funciones.h"
 
 int main() {
     

@@ -15,6 +15,13 @@
 #define CYAN            6
 #define WHITE           7
 
+// Función textColor
+// PRE: Recibe un numero entero que representa el color elegido.
+// POST: Cambia el color de la consola.
 void textcolor(int colorLetra);
+
+// Funcion pasarMayusculas
+// PRE: Recibe un string valido.
+// POST: Convierte el string a mayusculas. 
 std::string pasarMayusculas(std::string palabra);
 

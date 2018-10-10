@@ -111,6 +111,9 @@ public:
     // POST: Devuelve un número aleatorio, que representa el número de linea en el que se buscará la palabra a adivinar.
     int randomLinea();
     
+    // M�todo mostrarAhorcado
+    // PRE: Recibe un numero del tipo flotante.
+    // POST: Imprime por pantalla las diferentes partes del cuerpo a medida que el usuario va fallando.
     void mostrarAhorcado(float fallos);
     
     // Metodo convertirSumando
